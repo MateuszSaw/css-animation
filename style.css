@@ -1,0 +1,142 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.container {
+   margin: 0 100px;
+}
+
+/* gradient */
+
+.gradient {
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(90deg,rgba(149,1,5,0.7), rgba(16,129,215,0.59));
+    background-size: 150%;
+    transition-property: background;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    margin-bottom: 30px;
+}
+
+.gradient:hover{
+    background-position: 100% 50%;
+}
+
+/* square and rotation */
+
+.square {
+    width: 100%;
+    perspective: 500px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.square__item {
+    background: white;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0px 0px 10px #ccc;  
+}
+
+.square__item:hover { 
+    animation-name: rotate3d, zoom;
+    animation-duration: 4s;
+    animation-delay: 0s, 4s;
+}
+
+/* from square to circle */
+
+.circle {
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px #ccc;
+    margin: 0 auto 30px auto;
+}
+
+.circle__element {    
+    margin-bottom: 0;
+    background: #5998a0;
+    height: 50px;
+    width: 50px;
+}
+
+.circle:hover .circle__element {
+    animation: square_to_circle 3s linear alternate infinite;
+}
+
+.circle__element:hover {
+    animation-play-state: paused;
+ }
+
+ /* grid gallery */
+
+ .gallery {
+     width: 75%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;    
+    justify-content: center;
+    margin: 0 auto 30px auto;
+
+}
+.gallery__item {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition-timing-function: ease-in;
+    transition-duration: 0.2s;
+}
+ 
+    .gallery__item:hover {
+        transform: scale(1.1);
+    }
+
+    /* media queries */
+
+    @media(max-width: 767px) {
+        .gallery {
+            width: 90%;
+        }
+    }
+    @media(max-width: 1280px) {
+        .container{
+            margin: 0;
+        }
+    }
+
+    /* animations */
+
+@keyframes rotate3d {
+
+    50% {
+        transform: rotate3d(1, 0, 0, 180deg);
+    }
+    100% {
+        transform: rotate3d(0, 0, 1, 180deg);
+    }
+    
+}
+@keyframes zoom {
+    100% {
+        transform: scale(2);
+    }
+}
+
+@keyframes square_to_circle {
+    50% {
+        background-color: #ffbec1;
+        border-radius: 50%;
+        scale: 1.5;
+    }
+    100%{
+        margin-left: 410px;
+        }
+}
+
